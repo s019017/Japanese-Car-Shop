@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japanese Cars</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--Header-->
+    <header class="header">
+        <h1 style="margin-left:2vw;">Japenese Cars</h1>
+    </header>
+
+    <select id="filterDropdown">
+        <option value="none" selected disabled>Choose A Filter</option>
+        <optgroup label="Price">
+        <option value="priceLoHi">Price Low to High</option>
+        <option value="priceHiLo">Price High to Low</option>
+        </optgroup>
+        <optgroup label="Stock">
+        <option value="stockLoHi">Stock Low to High</option>
+        <option value="stockHiLo">Stock High to Low</option>
+        </optgroup>
+        <optgroup label="Age">
+        <option value="ageLoHi">Age Low to High</option>
+        <option value="ageHiLo">Age High to Low</option>
+        </optgroup>
+    </select>
+
+    <!--New List-->
+    <div id="productGrid" class="productGrid"></div>
+
+    <!--Cart-->
+    <h1>Cart</h1>
+    <div id="cartListDiv">
+        <ul id="cartULTag"></ul>
+    </div>
+
+</body>
+<script src="script.js"></script>
+</html>

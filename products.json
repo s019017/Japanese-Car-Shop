@@ -1,0 +1,105 @@
+[
+    {
+        "make": "Nissan",
+        "model": "Silvia S15",
+        "startYear": 1999,
+        "endYear": 2002,
+        "hp": 250,
+        "torque": 274,
+        "topSpeed": 150,
+        "stock": 9,
+        "price":23000,
+        "productID":1
+    },
+
+    {
+        "make": "Nissan",
+        "model": "180sx",
+        "startYear": 1989,
+        "endYear":1998,
+        "hp": 175,
+        "torque": 276,
+        "topSpeed": 145,
+        "stock": 3,
+        "price":23000,
+        "productID":2
+    },
+    
+    {
+        "make": "Toyota",
+        "model": "AE86 Trueno",
+        "startYear": 1983,
+        "endYear": 1987,
+        "hp": 128,
+        "torque": 140,
+        "topSpeed": 130,
+        "stock": 1,
+        "price":15000,
+        "productID":3
+    },
+    
+    {
+        "make": "Mitsubishi",
+        "model": "3000GT",
+        "startYear": 1992,
+        "endYear": 1995,
+        "hp": 282,
+        "torque": 407,
+        "topSpeed": 155,
+        "stock": 5,
+        "price":10000,
+        "productID":4
+    },
+    
+    {
+        "make": "Subaru",
+        "model": "Impreza WRX STI",
+        "startYear": 2002,
+        "endYear": 2005,
+        "hp": 300,
+        "torque": 413,
+        "topSpeed": 153,
+        "stock": 4,
+        "price":25000,
+        "productID":5
+    },
+    
+    {
+        "make": "Honda",
+        "model": "Civic Type R EK9",
+        "startYear": 1997,
+        "endYear": 2000,
+        "hp": 185,
+        "torque": 160,
+        "topSpeed": 140,
+        "stock": 6,
+        "price":20000,
+        "productID":6
+    },
+    
+    {
+        "make": "Honda",
+        "model": "NSX",
+        "startYear": 1990,
+        "endYear": 2005,
+        "hp": 280,
+        "torque": 215,
+        "topSpeed": 172,
+        "stock": 2,
+        "price":100000,
+        "productID":7
+    },
+    
+    {
+        "make": "Mazda",
+        "model": "Miata NA",
+        "startYear": 1989,
+        "endYear": 1994,
+        "hp": 13,
+        "torque": 135,
+        "topSpeed": 121,
+        "stock": 18,
+        "price":3000,
+        "productID":8
+    }
+]
