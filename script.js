@@ -38,6 +38,11 @@ function createCarList(cars){
         let topSpeedLbl = document.createElement('p');
         topSpeedLbl.textContent = "| " + car.topSpeed + "MPH |";
 
+        let priceLbl = document.createElement('p');
+        priceLbl.textContent = "| £" + car.price + " |"
+
+        let stockLbl = document.createElement('p');
+        stockLbl.textContent = "| Stock: " + car.stock + " |"
 
         carNameContainer.append(carNameLbl)
         listItemContainer.append(carNameContainer)
@@ -46,10 +51,10 @@ function createCarList(cars){
         productItemContent.append(hpLbl);
         productItemContent.append(torqueLbl);
         productItemContent.append(topSpeedLbl);
-
+        productItemContent.append(priceLbl);
+        productItemContent.append(stockLbl);
 
         listItemContainer.append(productItemContent);
-
         
         
         productGrid.append(listItemContainer);
