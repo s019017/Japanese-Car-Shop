@@ -1,5 +1,6 @@
 const ADDRESS = 'products.json';
 
+let cart = [];
 
 const FILTER = document.getElementById('filterDropdown');
 FILTER.addEventListener('change',async () => {
@@ -86,6 +87,33 @@ function createCarList(cars){
         let stockLbl = document.createElement('p');
         stockLbl.textContent = "| Stock: " + car.stock + " |"
 
+        let addToCartCon = document.createElement('div');
+        addToCartCon.classList.add('addToCartCon');
+
+        let addToCartBtn = document.createElement('button');
+        addToCartBtn.classList.add('addToCartBtn');
+        addToCartBtn.textContent = "🛒 Add to Cart";
+
+        addToCartBtn.addEventListener('click', () => {
+            document.getElementById('cartULTag').remove();
+            console.log("Old removed")
+            let addedItem = cars.filter((product) => product.productID == car.productID);
+
+            cart.push(
+                addedItem[0]
+            );
+
+            let cartULTag = document.createElement('ul');
+            cartULTag.setAttribute('id','cartULTag');
+
+            cart.sort((a,b) => a.productID - b.productID)
+            for (const item of cart){
+                let currentItem = document.createElement('li');
+                currentItem.textContent = "| "+item.productID+" | "+item.make+" | "+item.model+" |";
+                cartULTag.append(currentItem);
+            }
+            document.getElementById('cartListDiv').append(cartULTag);
+        });
 
         carNameContainer.append(carNameLbl)
         listItemContainer.append(carNameContainer)
@@ -98,6 +126,9 @@ function createCarList(cars){
         productItemContent.append(stockLbl);
 
         listItemContainer.append(productItemContent);
+
+        addToCartCon.append(addToCartBtn)
+        listItemContainer.append(addToCartCon);
         
         
         productGrid.append(listItemContainer);
