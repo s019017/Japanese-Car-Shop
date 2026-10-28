@@ -107,12 +107,26 @@ function createCarList(cars){
             cartULTag.setAttribute('id','cartULTag');
 
             cart.sort((a,b) => a.productID - b.productID)
+
+            let totalCost = 0;
+
             for (const item of cart){
                 let currentItem = document.createElement('li');
-                currentItem.textContent = "| "+item.productID+" | "+item.make+" | "+item.model+" |";
+                currentItem.textContent = "| "+item.productID+" | "+item.make+" | "+item.model+" | £"+item.price+" |";
                 cartULTag.append(currentItem);
+
+                totalCost += item.price;
             }
             document.getElementById('cartListDiv').append(cartULTag);
+
+
+            document.getElementById('cartCost').remove();
+
+            let totalCostLbl = document.createElement('p');
+            totalCostLbl.textContent = "Price: £"+totalCost;
+            totalCostLbl.setAttribute('id','cartCost')
+            
+            document.getElementById('cartListDiv').append(totalCostLbl)
         });
 
         carNameContainer.append(carNameLbl)
