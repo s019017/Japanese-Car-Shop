@@ -1,6 +1,48 @@
 const ADDRESS = 'products.json';
 
 
+const FILTER = document.getElementById('filterDropdown');
+FILTER.addEventListener('change',async () => {
+
+    let items = document.querySelectorAll('.productGridItem');
+    for (const item of items){
+        item.remove();
+    };
+
+    carsArr = await getCars(ADDRESS);
+    
+    switch (FILTER.value) {
+        case "priceLoHi":
+            carsArr = carsArr.sort((a,b) => a.price - b.price);
+            break;
+
+        case "priceHiLo":
+            carsArr = carsArr.sort((a,b) => b.price - a.price);
+            break;
+        
+        case "ageLoHi":
+            carsArr = carsArr.sort((a,b) => a.startYear - b.startYear)
+            break;
+        
+        case "ageHiLo":
+            carsArr = carsArr.sort((a,b) => b.startYear - a.startYear)
+            break;
+        
+        case "stockLoHi":
+            carsArr = carsArr.sort((a,b) => a.stock - b.stock)
+            break;
+        
+        case "stockHiLo":
+            carsArr = carsArr.sort((a,b) => b.stock - a.stock)
+            break;
+        
+        default:
+            break;
+    };
+
+    createCarList(carsArr);
+})
+
 async function getCars(ADDRESS){
     const RESPONSE = await fetch(ADDRESS);
     return RESPONSE.json();//returns car list
@@ -43,6 +85,7 @@ function createCarList(cars){
 
         let stockLbl = document.createElement('p');
         stockLbl.textContent = "| Stock: " + car.stock + " |"
+
 
         carNameContainer.append(carNameLbl)
         listItemContainer.append(carNameContainer)
