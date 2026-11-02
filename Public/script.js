@@ -1,5 +1,5 @@
 //constant to store the json location
-const ADDRESS = 'products.json';
+const ADDRESS = 'http://localhost:3000/api/products';
 
 // array to store cart items
 let cart = [];
@@ -70,9 +70,12 @@ FILTER.addEventListener('change',async () => {
  * in JSON format.
  */
 
+
 async function getCars(ADDRESS){
+    
     const RESPONSE = await fetch(ADDRESS);
     return RESPONSE.json();//returns car list
+
 };
 
 /**
@@ -214,9 +217,13 @@ function createCarList(cars){
  * calls the other functions within itself to start the program
  */
 
+
 async function init(ADDRESS){
+    
     createCarList(await getCars(ADDRESS));
+
 }
 
 // Starts the program.
+
 init(ADDRESS);

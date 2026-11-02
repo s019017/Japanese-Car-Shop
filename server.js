@@ -15,7 +15,7 @@ async function getProducts(){
 };
 
 app.listen(PORT, () => {
-    console.log(`Japanese Car Shop is running at http://localhost:${PORT}`);
+    console.log(`Japanese Car Shop server is running at http://localhost:${PORT}`);
 });
 
 app.get('/api/products', async (req, res) => {
