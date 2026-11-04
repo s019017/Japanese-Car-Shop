@@ -74,11 +74,16 @@ body{margin:0;background-color:#F5EBDD;}
     transition: ease-in-out 0.1s;
     position:relative;
     transform:scaleX(1) scaleY(1);
+    border-style:solid;
+    border-width:0.25vw;
+    border-color:#e22;
 }
 
 .addToCartBtn:hover{
     background-color: #e22;
     transform:scaleX(1.1) scaleY(1.1);
+    border-style:solid;
+    border-color:#f33;
 }
 
 .filterDropdown{
