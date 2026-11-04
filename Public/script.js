@@ -102,7 +102,7 @@ function createCarList(cars){
         carNameContainer.classList.add('productTitleCon')
 
         let carNameLbl = document.createElement('p');
-        carNameLbl.textContent = "| " + car.make + " " + car.model + " |";
+        carNameLbl.textContent = car.make + " " + car.model;
         carNameLbl.classList.add('productTitle')
 
         let productItemContent = document.createElement('div');
@@ -110,22 +110,22 @@ function createCarList(cars){
 
 
         let yearLbl = document.createElement('p');
-        yearLbl.textContent = "| " + car.startYear + "-" + car.endYear + " |";
+        yearLbl.textContent = car.startYear + "-" + car.endYear;
         
         let hpLbl = document.createElement('p');
-        hpLbl.textContent = "| " + car.hp + "HP |";
+        hpLbl.textContent = car.hp + "HP";
 
         let torqueLbl = document.createElement('p');
-        torqueLbl.textContent = "| " + car.torque + "Nm |";
+        torqueLbl.textContent = car.torque + "Nm";
 
         let topSpeedLbl = document.createElement('p');
-        topSpeedLbl.textContent = "| " + car.topSpeed + "MPH |";
+        topSpeedLbl.textContent = car.topSpeed + "MPH";
 
         let priceLbl = document.createElement('p');
-        priceLbl.textContent = "| £" + car.price + " |"
+        priceLbl.textContent = "£" + car.price
 
         let stockLbl = document.createElement('p');
-        stockLbl.textContent = "| Stock: " + car.stock + " |"
+        stockLbl.textContent = "Stock: " + car.stock
 
         let addToCartCon = document.createElement('div');
         addToCartCon.classList.add('addToCartCon');
