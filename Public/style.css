@@ -10,8 +10,21 @@ All style names are labelled accordingly to there purpose
     background-color: #f33;
     width:100%;
     height:10vw;
-    display: flex;
+    display: inline-flex;
     align-items: center;
+}
+
+.headerTitle{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 3vw;
+    font-weight: bold;
+    color: #f5ebdd;
+    transform:scaleX(1) scaleY(1);
+    transition: ease-in-out 0.1;
+}
+
+.headerTitle:hover{
+    color:#dddddd;
 }
 
 body{margin:0;background-color:#F5EBDD;}
@@ -36,7 +49,6 @@ body{margin:0;background-color:#F5EBDD;}
     color:#f5ebdd;
     font-size:2vw;
     font-weight: bolder;
-    /*margin-left:10vw;*/
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     text-align:center;
 }
@@ -91,4 +103,29 @@ body{margin:0;background-color:#F5EBDD;}
     background-color:#f5ebdd;
     margin-left:1vw;
     margin-top:1vw;
+}
+
+.adminNav{
+    border-radius: 25px;
+    background-color: #f33;
+    border-color: #e22;
+    border-width: 0.5vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin:auto;
+    margin-top:5vw;
+    height: 15vw;
+    width:15vw;
+    font-size:3vw;
+    color:#fff;
+    cursor:pointer;
+    transition: ease-in-out 0.1s;
+    transform:scaleY(1) scaleX(1);
+}
+
+.adminNav:hover{
+    transform:scaleX(1.1) scaleY(1.1);
+    border-color: #f33;
+    background-color: #e22;
 }

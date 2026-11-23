@@ -5,7 +5,8 @@ const ADDRESS = 'http://localhost:3000/api/products';
 let cart = [];
 
 // constant to store the filter dropdown element
-const FILTER = document.getElementById('filterDropdown');
+
+//const FILTER = document.getElementById('filterDropdown');
 
 /**
  * @param {} - no params
@@ -16,6 +17,8 @@ const FILTER = document.getElementById('filterDropdown');
  * the appropriate sorting algorithm, then replaces the old
  * product list but using the sorted products array.
  */
+
+/*
 FILTER.addEventListener('change',async () => {
 
     let items = document.querySelectorAll('.productGridItem');
@@ -26,6 +29,7 @@ FILTER.addEventListener('change',async () => {
 
     // await causes the program to wait for a response
     carsArr = await getCars(ADDRESS);
+    
     
     // Switch case selects the correct 
     // algorithm for the right selected value.
@@ -59,7 +63,7 @@ FILTER.addEventListener('change',async () => {
     };
     // Fills the grid with the ordered products array
     createCarList(carsArr);
-})
+})*/
 
 /**
  * 
@@ -69,7 +73,6 @@ FILTER.addEventListener('change',async () => {
  * Response is fetched from the address and returned
  * in JSON format.
  */
-
 
 async function getCars(ADDRESS){
     
@@ -93,12 +96,12 @@ function createCarList(cars){
     
     // iterates through every car in the product array
     cars.forEach((car) =>{
-        productGrid.append(createProductItem(car))
+        productGrid.append(createProductItem(cars,car))
     })
 
 };
 
-function createProductItem(car){
+function createProductItem(cars,car){
     // Creates all of the elements along with the styling and content
 
     let listItemContainer = document.createElement('div');
@@ -153,28 +156,27 @@ function createProductItem(car){
         document.getElementById('cartULTag').remove();
         console.log("Old removed")
         // Stores data for the product interacted with
-        let addedItem = cars.filter((product) => product.productID == car.productID);
+        let addedItem = car;
 
         // adds the JSON dictionary selected to the cart array
-        cart.push(
-            addedItem[0]
-        );
+        cart.push(addedItem);
 
         // Creates the container for the list
         let cartULTag = document.createElement('ul');
         cartULTag.setAttribute('id','cartULTag');
 
         // Sorts the data by product ID
-        cart.sort((a,b) => a.productID - b.productID)
+        cart.sort((a,b) => a.id - b.id)
 
         let totalCost = 0;
 
         for (const item of cart){
             // Creates the list item and adds content
             let currentItem = document.createElement('li');
-            currentItem.textContent = "| "+item.productID+" | "+item.make+" | "+item.model+" | £"+item.price+" |";
+            currentItem.textContent = "| "+item.id+" | "+item.make+" | "+item.model+" | £"+item.price+" |";
             cartULTag.append(currentItem);
 
+            console.log(typeof item.id + "," + typeof item.make + "," + typeof item.price)
             // Sums the total cost
             totalCost += item.price;
         }
@@ -231,3 +233,78 @@ async function init(ADDRESS){
 // Starts the program.
 
 init(ADDRESS);
+
+const cartBtn = document.getElementById('cartBtn')
+cartBtn.addEventListener('click', () => {
+    localStorage.setItem('cart',JSON.stringify(cart));
+    window.location = "cart.html";
+})
+
+async function createBrandDropdown(ADDRESS){
+    products = await getCars(ADDRESS);
+    
+    const makeList = products.map(item => item.make);
+    let brandList = [];
+    makeList.forEach((brand) => {
+        if (!brandList.includes(brand)){
+            brandList.push(brand)
+        }
+    })
+
+    const defaultOption = document.createElement('option');
+    defaultOption.textContent = "None";
+    defaultOption.value = "None"
+    makeDropdown.append(defaultOption);
+
+
+    brandList.forEach((brand) => {
+        const brandOption = document.createElement('option');
+        brandOption.textContent = brand;
+        brandOption.value = brand;
+        makeDropdown.append(brandOption);
+    });
+    
+};
+
+createBrandDropdown(ADDRESS);
+
+const makeDropdown = document.getElementById('makeDropdown');
+const sortDropdown = document.getElementById('filterDropdown');
+
+async function updateCarList(){
+    let items = document.querySelectorAll('.productGridItem');
+    // Iterates through every product card
+    for (const item of items){
+        item.remove();
+    };
+
+    // await causes the program to wait for a response
+    //carsArr = await getCars(ADDRESS);
+    let make = makeDropdown.value;
+    let sort = sortDropdown.value;
+
+    if (makeDropdown.value != "None" || sortDropdown != "None"){
+        //carsArr = carsArr.filter(p => p.make.toLowerCase() === makeDropdown.value.toLowerCase());
+        getFilteredProducts(make, sort);
+    } else {
+        init(ADDRESS)
+    }
+
+}
+
+makeDropdown.addEventListener('change',() => updateCarList())
+sortDropdown.addEventListener('change',() => updateCarList())
+
+async function getFilteredProducts(make, sort){
+    const params = new URLSearchParams();
+    if (make != "None") params.set('make', make);
+    if (sort != "None") params.set('sort', sort);
+
+
+    const response = await fetch (`/api/products?${params}`);
+
+    let items = document.querySelectorAll('.productGridItem');
+    // Iterates through every product card
+
+    createCarList(await response.json());
+}

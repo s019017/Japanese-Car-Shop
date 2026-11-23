@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1 style="margin-left:2vw;">Edit Form</h1>
+    </div>
+    <br><br>
+    <button class="addToCartBtn" style="width:10vw;margin-left: 2vw;font-size: 2vw;">Back</button>
+    <br><br>
+</body>
+<script>
+    document.querySelector(".addToCartBtn").addEventListener('click',() => {
+        history.back()
+    })
+</script>
+</html>

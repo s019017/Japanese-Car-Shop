@@ -1,26 +1,21 @@
 const express = require('express');
-
-const fs = require('fs/promises');
 const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-async function getProducts(){
-    const data = await fs.readFile(
-        path.join(__dirname, 'products.json'),
-        'utf8'
-    );
+const productRouter = require('./routes/products.js')
 
-    return JSON.parse(data);
-};
+app.use(express.json());
+app.use(express.static('Public'));
+app.use('/api/products',productRouter);
+
 
 app.listen(PORT, () => {
     console.log(`Japanese Car Shop server is running at http://localhost:${PORT}`);
 });
 
-app.get('/api/products', async (req, res) => {
-    const products = await getProducts();
+/*app.get('/api/products', async (req, res) => {
     res.json(products);
-});
+});*/
 
 app.use(express.static(path.join(__dirname, 'Public')));

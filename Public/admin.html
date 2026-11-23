@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1 style="margin-left:2vw;">Admin Portal</h1>
+    </div>
+
+    <div style="display:grid;grid-template-columns:3;">
+        <button id="1" class="adminNav" style="grid-column: 1;">Add</button>
+        <button id="2" class="adminNav" style="grid-column: 2;">Remove</button>
+        <button id="3" class="adminNav" style="grid-column: 3;">Edit</button>
+    </div>
+</body>
+<script>
+    document.getElementById("1").addEventListener('click', () => {
+        window.location = "addForm.html";
+    })
+
+    document.getElementById("2").addEventListener('click', () => {
+        window.location = "removeForm.html";
+    })
+
+    document.getElementById("3").addEventListener('click', () => {
+        window.location = "editForm.html";
+    })
+</script>
+</html>
